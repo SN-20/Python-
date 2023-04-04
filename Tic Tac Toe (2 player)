@@ -8,7 +8,7 @@ def printBoard(board):
   print(board[7]+ '|' + board[8] + '|' + board[9])
   print('\n')
 
-# printBoard(board)
+printBoard(board)
 
 def spaceIsFree(position):
   if board[position]==' ':
@@ -46,7 +46,7 @@ def checkWin():
   else:
     return False
 
-# only 2 letters: x,o   x is computer and o is player
+# only 2 letters: x,o   x is player1 and o is player2
 # to insert letter in board
 def insertLetter(letter, position):
   if spaceIsFree(position):
@@ -61,11 +61,11 @@ def insertLetter(letter, position):
     
     if checkWin():
       if letter == 'x':
-        print("Bot Wins!")
+        print("Player1 Wins!")
         exit()
       
       else:
-        print("Player Wins!")
+        print("Player2 Wins!")
         exit()
       
       return
@@ -85,17 +85,17 @@ def insertLetter(letter, position):
 player = 'o'
 comp = 'x'
 
-def playerMove():
-  position = int(input("Enter the position for 'o': "))
+def player2Move():
+  position = int(input("Enter the position for 'o'(1-9): "))
   insertLetter(player, position)
   return
 
-def compMove():
-  position = int(input("Enter the position for 'x': "))
+def player1Move():
+  position = int(input("Enter the position for 'x'(1-9): "))
   insertLetter(comp, position)
   return
 
-while not checkWin():
-  compMove()
-  playerMove()
 
+while not checkWin():
+  player1Move()
+  player2Move()
